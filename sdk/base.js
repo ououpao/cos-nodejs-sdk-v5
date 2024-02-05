@@ -4216,12 +4216,12 @@ function _submitRequest(params, callback) {
       sender.on('end', function () {
         cb(null, {});
       });
-    } else if (responseContentLength >= process.binding('buffer').kMaxLength && opt.method !== 'HEAD') {
+    } else if (responseContentLength >= require('buffer').kMaxLength && opt.method !== 'HEAD') {
       cb(
         util.error(
           new Error(
             'file size large than ' +
-              process.binding('buffer').kMaxLength +
+              require('buffer').kMaxLength +
               ', please use "Output" Stream to getObject.'
           )
         )
